@@ -1,0 +1,19 @@
+name: "Build - action"
+
+on: [push, pull_request]
+
+jobs:
+  build-docker-image:
+    name: "TestK8s"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run build.bash
+        env:
+          BLD_DOCKER_IMAGE: testk8s
+          GHCR_OWNER: ${{secrets.GHCR_OWNER}}
+          GHCR_PAT: ${{secrets.GHCR_PAT}}
+          GHCR_USER: ${{secrets.GHCR_USER}}
+        run: cd TestK8s && ./build.bash -p

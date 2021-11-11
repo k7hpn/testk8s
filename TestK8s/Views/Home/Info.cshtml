@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Info";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Info</h1>
+    <table class="table table-sm table-striped">
+        <tr>
+            <th>Setting</th>
+            <th>Value</th>
+            </tr>
+        @foreach (var item in (Dictionary<string,string>)TempData["environment"]) {
+        <tr>
+            <td>@item.Key</td>
+            <td>@item.Value</td>
+        </tr>
+        }
+    </table>
+</div>
