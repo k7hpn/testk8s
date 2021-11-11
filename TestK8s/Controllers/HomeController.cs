@@ -37,6 +37,7 @@ namespace TestK8s.Controllers
 
             var environment = new Dictionary<string, string>
             {
+                {"Version", Program.GetVersion() },
                 {"Machine name", Environment.MachineName },
                 {"OS Version", Environment.OSVersion.ToString() },
                 {"Processor count", Environment.ProcessorCount.ToString() },
@@ -51,7 +52,7 @@ namespace TestK8s.Controllers
                     + HttpContext.Connection.LocalPort.ToString() },
                 { "Current remote ip/port", HttpContext.Connection.RemoteIpAddress.ToString()
                     + "/"
-                    + HttpContext.Connection.RemotePort.ToString() }
+                    + HttpContext.Connection.RemotePort.ToString() },
             };
 
             if (HttpContext.Session.TryGetValue("CreatedAt", out byte[] ticksBytes))

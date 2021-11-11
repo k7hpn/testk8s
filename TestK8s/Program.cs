@@ -89,7 +89,7 @@ namespace TestK8s
             }
         }
 
-        private static string GetVersion()
+        public static string GetVersion()
         {
             var fileVersion = Assembly
                  .GetEntryAssembly()
