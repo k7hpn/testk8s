@@ -37,14 +37,14 @@ namespace TestK8s.Controllers
 
             var environment = new Dictionary<string, string>
             {
-                {"Version", Program.GetVersion() },
+                {"Program Version", Program.GetVersion() },
                 {"Machine name", Environment.MachineName },
                 {"OS Version", Environment.OSVersion.ToString() },
                 {"Processor count", Environment.ProcessorCount.ToString() },
                 {"64-bit OS", Environment.Is64BitOperatingSystem.ToString() },
                 {"64-bit Process", Environment.Is64BitProcess.ToString() },
                 { "System page size", Environment.SystemPageSize.ToString() },
-                { "Version", Environment.Version.ToString() },
+                { "Environment Version", Environment.Version.ToString() },
                 { "SessionId", HttpContext.Session.Id },
                 { "Current time", now.ToString() },
                 { "Current local ip/port", HttpContext.Connection.LocalIpAddress.ToString()

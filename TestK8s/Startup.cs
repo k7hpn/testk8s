@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StackExchange.Redis;
 using System;
 using System.Linq;
 
@@ -58,6 +59,12 @@ namespace TestK8s
 
             app.UseStaticFiles();
 
+            app.UseRouting();
+
+            //app.UseAuthorization();
+            
+            app.UseSession();
+            
             app.Use(async (context, next) =>
             {
                 if (!context.Session.Keys.Contains("CreatedAt"))
@@ -70,12 +77,6 @@ namespace TestK8s
                 }
                 await next.Invoke();
             });
-
-            app.UseRouting();
-
-            //app.UseAuthorization();
-            
-            app.UseSession();
 
             app.UseEndpoints(_ =>
             {
